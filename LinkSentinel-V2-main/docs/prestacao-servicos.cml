@@ -1,0 +1,121 @@
+ContextMap PrestacaoServicosMap {
+  contains Usuarios_e_Pedidos
+  contains Servicos_e_Avaliacao
+
+  Usuarios_e_Pedidos [SK] Servicos_e_Avaliacao
+}
+
+BoundedContext Usuarios_e_Pedidos {
+  Aggregate Cliente {
+    Entity Cliente {
+      id : Integer
+      nome : String
+      email : String
+      telefone : String
+      endereco : Endereco
+      prestadoresFavoritos : List<Integer>
+    }
+  }
+
+  Aggregate Prestador {
+    Entity Prestador {
+      id : Integer
+      nome : String
+      tipoServico : String
+      email : String
+      telefone : String
+      endereco : Endereco
+    }
+  }
+
+  ValueObject Endereco {
+    rua : String
+    bairro : String
+    cidade : String
+    estado : String
+  }
+
+  Aggregate Pedido {
+    Entity Pedido {
+      id : Integer
+      servicoId : Integer
+      prestadorId : Integer
+      clienteId : Integer
+      data : Date
+      status : StatusPedido
+    }
+  }
+
+  ValueObject StatusPedido {
+    Enum StatusPedido {
+      PENDENTE
+      CONCLUIDO
+      CANCELADO
+    }
+  }
+
+  Repository ClienteRepository {
+    save(cliente : Cliente) : void
+    findAll() : List<Cliente>
+    delete(cliente : Cliente) : void
+  }
+
+  Repository PrestadorRepository {
+    save(prestador : Prestador) : void
+    findByName(name : String) : List<Integer>
+    findById(id : Integer) : Prestador
+    findAll() : List<Prestador>
+    delete(prestador : Prestador) : void
+  }
+
+  Repository PedidosRepository {
+    save(pedido : Pedido) : void
+    findByClientName(nome : String) : List<Integer>
+    findByPrestadorName(nome: String) : List<Integer>
+    findById(id : Integer) : Pedido
+    deleteById(id : Integer) : void
+  }
+}
+
+BoundedContext Servicos_e_Avaliacao {
+  Aggregate PrestacaoServico {
+    Entity PrestacaoServico {
+      id : Integer
+      descricao : String
+      valor : Float
+      bairro : String
+      categoria : String
+      prestadorId : Integer
+    }
+  }
+
+  Aggregate Avaliacao {
+    Entity Avaliacao {
+      id : Integer
+      prestadorId : Integer
+      clienteId : Integer
+      nota : Float
+      comentario : String
+      tipoAvaliacao : TipoAvaliacao
+    }
+  }
+
+  ValueObject TipoAvaliacao {
+    Enum TipoAvaliacao {
+      CLIENTE_AVALIA_PRESTADOR
+      PRESTADOR_AVALIA_CLIENTE
+    }
+  }
+
+  Repository ServicosRepository {
+    save(servico : PrestacaoServico) : void
+    findByPrestadorName(nome: String) : List<PrestacaoServico>
+    findById(id : Integer) : PrestacaoServico
+    deleteById(id : Integer) : void
+  }
+
+  Repository AvaliacaoRepository {
+    save(avaliacao : Avaliacao) : void
+    deleteById(id : Integer) : void
+  }
+}
