@@ -1,0 +1,148 @@
+Domain LinkSentinel_Domain {
+    Subdomain GerenciamentoContas
+    Subdomain GerenciamentoLinksColecoes
+    Subdomain VerificacaoMonitoramento
+    Subdomain AnaliseRiscoPhishing
+    Subdomain Notificacoes
+    Subdomain RelatoriosHistorico
+}
+
+ContextMap {
+    contains OrganizacaoContext
+    contains MonitoramentoContext
+    contains HistoricoContext
+
+    OrganizacaoContext Shared-Kernel MonitoramentoContext
+    MonitoramentoContext Shared-Kernel OrganizacaoContext
+
+    OrganizacaoContext Shared-Kernel HistoricoContext
+    HistoricoContext Shared-Kernel OrganizacaoContext
+
+    MonitoramentoContext Shared-Kernel HistoricoContext
+    HistoricoContext Shared-Kernel MonitoramentoContext
+}
+
+BoundedContext OrganizacaoContext implements GerenciamentoContas, GerenciamentoLinksColecoes {
+    Aggregate Usuario {
+        Entity Usuario {
+            aggregateRoot
+            -UsuarioId id
+            -Email emailAddress
+            -SenhaHash senhaHash
+        }
+        ValueObject UsuarioId { String valor }
+        ValueObject Email { String endereco }
+        ValueObject SenhaHash { String valor }
+    }
+
+    Aggregate Colecao {
+        Entity Colecao {
+            aggregateRoot
+            -ColecaoId id
+            -UsuarioId donoId
+            String nome
+            -List<Link> links
+        }
+        ValueObject ColecaoId { String valor }
+
+        Entity Link {
+            -LinkId id
+            -URL linkAddress
+            String descricao nullable
+            Date dataAdicao
+        }
+        ValueObject LinkId { String valor }
+        ValueObject URL { String valorCompleto }
+    }
+}
+
+BoundedContext MonitoramentoContext implements VerificacaoMonitoramento, AnaliseRiscoPhishing, Notificacoes {
+    Aggregate VerificacaoResultado {
+        Service VerificadorLinkServico {
+            void solicitarVerificacaoImediata(@LinkId linkId, @URL targetUrl);
+        }
+
+        Service NotificadorServico {
+        }
+
+        Entity ResultadoVerificacao {
+            aggregateRoot
+            -ResultadoVerificacaoId id
+            -LinkId linkId_ref
+            Date dataHoraVerificacao
+            String statusHttp
+            -SSLInfo sslInfo nullable
+            -MetadadosPagina metadadosPagina nullable
+            long tempoRespostaMs
+            -ScoreRiscoPhishing valorScoreRiscoPhishing
+        }
+        ValueObject ResultadoVerificacaoId { String valor }
+        ValueObject SSLInfo { 
+            boolean valido
+            String emitente nullable
+            Date validadeCertificado nullable 
+        }
+        ValueObject MetadadosPagina { 
+            String titulo nullable
+            String descricaoPagina nullable 
+        }
+        ValueObject ScoreRiscoPhishing {
+            -RiscoNivel nivelDoRisco
+            List<String> motivos nullable
+        }
+        enum RiscoNivel { 
+            BAIXO, MEDIO, ALTO, INDETERMINADO 
+        }
+
+        DomainEvent EventoVerificacao {
+            -LinkId linkId
+            Date dataHoraEvento
+        }
+        DomainEvent LinkVerificacaoConcluida extends EventoVerificacao {
+            -ResultadoVerificacaoId resultadoId
+        }
+        DomainEvent RiscoPhishingAltoDetectado extends EventoVerificacao {
+            -ScoreRiscoPhishing snapshotScoreRisco
+            -URL url_snapshot
+        }
+        DomainEvent LinkIndisponivelDetectado extends EventoVerificacao {
+            String statusHttp
+            -URL url_snapshot
+        }
+    }
+}
+
+BoundedContext HistoricoContext implements RelatoriosHistorico {
+    Aggregate VisualizacaoHistorico {
+        Entity VisualizacaoHistoricoLink {
+            aggregateRoot
+            -LinkId linkId_ref
+            -URL urlDoLink_snapshot
+            -List<LogVerificacao> logs
+        }
+        ValueObject LogVerificacao {
+            Date dataHora
+            String statusHttp
+            MonitoramentoContext.VerificacaoResultado.ScoreRiscoPhishing snapshotScoreRiscoPhishing
+        }
+    }
+
+    Aggregate RelatorioColecaoAgregado {
+        Entity RelatorioColecao {
+            aggregateRoot
+            -RelatorioId id
+            -ColecaoId colecaoId_ref
+            String nomeColecao_snapshot
+            Date dataGeracaoRelatorio
+            int totalLinksAnalisados
+            int linksAtivos
+            int linksComSSLValido
+            -List<ContagemScoreRisco> contagensScore
+        }
+        ValueObject RelatorioId { String valor }
+        ValueObject ContagemScoreRisco {
+            MonitoramentoContext.VerificacaoResultado.RiscoNivel nivelDoRisco
+            int quantidade
+        }
+    }
+}
