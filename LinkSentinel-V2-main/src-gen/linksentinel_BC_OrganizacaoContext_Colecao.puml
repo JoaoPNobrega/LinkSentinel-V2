@@ -1,0 +1,34 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'Colecao' Aggregate" <<Rectangle>> {
+	class Colecao <<(A,#fffab8) Aggregate Root>> {
+		String nome
+		ColecaoId id
+		UsuarioId donoId
+		List<Link> links
+	}
+	class ColecaoId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class Link <<(E,DarkSeaGreen) Entity>> {
+		String[0..1] descricao
+		Date dataAdicao
+		LinkId id
+		URL linkAddress
+	}
+	class LinkId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class URL <<(V,DarkSeaGreen) Value Object>> {
+		String valorCompleto
+	}
+}
+Link --> URL : linkAddress
+Link --> LinkId : id
+Colecao "1" *--> "*" Link : links
+Colecao --> ColecaoId : id
+
+
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'Usuario' Aggregate" <<Rectangle>> {
+	class Usuario <<(A,#fffab8) Aggregate Root>> {
+		UsuarioId id
+		Email emailAddress
+		SenhaHash senhaHash
+	}
+	class UsuarioId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class Email <<(V,DarkSeaGreen) Value Object>> {
+		String endereco
+	}
+	class SenhaHash <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+}
+package "'Colecao' Aggregate" <<Rectangle>> {
+	class Colecao <<(A,#fffab8) Aggregate Root>> {
+		String nome
+		ColecaoId id
+		UsuarioId donoId
+		List<Link> links
+	}
+	class ColecaoId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class Link <<(E,DarkSeaGreen) Entity>> {
+		String[0..1] descricao
+		Date dataAdicao
+		LinkId id
+		URL linkAddress
+	}
+	class LinkId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class URL <<(V,DarkSeaGreen) Value Object>> {
+		String valorCompleto
+	}
+}
+Colecao --> UsuarioId : donoId
+Link --> URL : linkAddress
+Link --> LinkId : id
+Colecao "1" *--> "*" Link : links
+Usuario --> UsuarioId : id
+Usuario --> SenhaHash : senhaHash
+Colecao --> ColecaoId : id
+Usuario --> Email : emailAddress
+legend left
+  This bounded context implements the subdomain 'GerenciamentoContas'.
+  This bounded context implements the subdomain 'GerenciamentoLinksColecoes'.
+end legend
+
+
+@enduml

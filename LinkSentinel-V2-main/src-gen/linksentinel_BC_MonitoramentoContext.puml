@@ -1,0 +1,76 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'VerificacaoResultado' Aggregate" <<Rectangle>> {
+	class ResultadoVerificacao <<(A,#fffab8) Aggregate Root>> {
+		Date dataHoraVerificacao
+		String statusHttp
+		long tempoRespostaMs
+		ResultadoVerificacaoId id
+		LinkId linkId_ref
+		SSLInfo[0..1] sslInfo
+		MetadadosPagina[0..1] metadadosPagina
+		ScoreRiscoPhishing valorScoreRiscoPhishing
+	}
+	class ResultadoVerificacaoId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class SSLInfo <<(V,DarkSeaGreen) Value Object>> {
+		boolean valido
+		String[0..1] emitente
+		Date[0..1] validadeCertificado
+	}
+	class MetadadosPagina <<(V,DarkSeaGreen) Value Object>> {
+		String[0..1] titulo
+		String[0..1] descricaoPagina
+	}
+	class ScoreRiscoPhishing <<(V,DarkSeaGreen) Value Object>> {
+		List<String>[0..1] motivos
+		RiscoNivel nivelDoRisco
+	}
+	enum RiscoNivel {
+		BAIXO
+		MEDIO
+		ALTO
+		INDETERMINADO
+	}
+	class EventoVerificacao <<(E,#ff9f4b) Domain Event>> {
+		Date dataHoraEvento
+		LinkId linkId
+	}
+	class LinkVerificacaoConcluida <<(E,#ff9f4b) Domain Event>> {
+		ResultadoVerificacaoId resultadoId
+	}
+	class RiscoPhishingAltoDetectado <<(E,#ff9f4b) Domain Event>> {
+		ScoreRiscoPhishing snapshotScoreRisco
+		URL url_snapshot
+	}
+	class LinkIndisponivelDetectado <<(E,#ff9f4b) Domain Event>> {
+		String statusHttp
+		URL url_snapshot
+	}
+	class VerificadorLinkServico <<(S,DarkSeaGreen) Service>> {
+		void solicitarVerificacaoImediata(LinkId linkId, URL targetUrl)
+	}
+	class NotificadorServico <<(S,DarkSeaGreen) Service>> {
+	}
+}
+LinkVerificacaoConcluida --> ResultadoVerificacaoId : resultadoId
+ResultadoVerificacao --> ResultadoVerificacaoId : id
+ResultadoVerificacao "1" --> "0..1" MetadadosPagina : metadadosPagina
+ResultadoVerificacao "1" --> "0..1" SSLInfo : sslInfo
+ResultadoVerificacao --> ScoreRiscoPhishing : valorScoreRiscoPhishing
+RiscoPhishingAltoDetectado --> ScoreRiscoPhishing : snapshotScoreRisco
+ScoreRiscoPhishing --> RiscoNivel : nivelDoRisco
+LinkVerificacaoConcluida --|> EventoVerificacao
+RiscoPhishingAltoDetectado --|> EventoVerificacao
+LinkIndisponivelDetectado --|> EventoVerificacao
+legend left
+  This bounded context implements the subdomain 'VerificacaoMonitoramento'.
+  This bounded context implements the subdomain 'AnaliseRiscoPhishing'.
+  This bounded context implements the subdomain 'Notificacoes'.
+end legend
+
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'VisualizacaoHistorico' Aggregate" <<Rectangle>> {
+	class VisualizacaoHistoricoLink <<(A,#fffab8) Aggregate Root>> {
+		LinkId linkId_ref
+		URL urlDoLink_snapshot
+		List<LogVerificacao> logs
+	}
+	class LogVerificacao <<(V,DarkSeaGreen) Value Object>> {
+		Date dataHora
+		String statusHttp
+		MonitoramentoContext.VerificacaoResultado.ScoreRiscoPhishing snapshotScoreRiscoPhishing
+	}
+}
+package "'RelatorioColecaoAgregado' Aggregate" <<Rectangle>> {
+	class RelatorioColecao <<(A,#fffab8) Aggregate Root>> {
+		String nomeColecao_snapshot
+		Date dataGeracaoRelatorio
+		int totalLinksAnalisados
+		int linksAtivos
+		int linksComSSLValido
+		RelatorioId id
+		ColecaoId colecaoId_ref
+		List<ContagemScoreRisco> contagensScore
+	}
+	class RelatorioId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class ContagemScoreRisco <<(V,DarkSeaGreen) Value Object>> {
+		MonitoramentoContext.VerificacaoResultado.RiscoNivel nivelDoRisco
+		int quantidade
+	}
+}
+RelatorioColecao "1" *--> "*" ContagemScoreRisco : contagensScore
+VisualizacaoHistoricoLink "1" *--> "*" LogVerificacao : logs
+RelatorioColecao --> RelatorioId : id
+legend left
+  This bounded context implements the subdomain 'RelatoriosHistorico'.
+end legend
+
+
+@enduml

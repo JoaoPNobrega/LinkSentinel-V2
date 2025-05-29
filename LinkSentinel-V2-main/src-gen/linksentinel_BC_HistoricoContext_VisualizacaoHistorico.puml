@@ -1,0 +1,20 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'VisualizacaoHistorico' Aggregate" <<Rectangle>> {
+	class VisualizacaoHistoricoLink <<(A,#fffab8) Aggregate Root>> {
+		LinkId linkId_ref
+		URL urlDoLink_snapshot
+		List<LogVerificacao> logs
+	}
+	class LogVerificacao <<(V,DarkSeaGreen) Value Object>> {
+		Date dataHora
+		String statusHttp
+		MonitoramentoContext.VerificacaoResultado.ScoreRiscoPhishing snapshotScoreRiscoPhishing
+	}
+}
+VisualizacaoHistoricoLink "1" *--> "*" LogVerificacao : logs
+
+
+@enduml

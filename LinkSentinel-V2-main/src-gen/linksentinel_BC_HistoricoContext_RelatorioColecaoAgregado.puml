@@ -1,0 +1,28 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'RelatorioColecaoAgregado' Aggregate" <<Rectangle>> {
+	class RelatorioColecao <<(A,#fffab8) Aggregate Root>> {
+		String nomeColecao_snapshot
+		Date dataGeracaoRelatorio
+		int totalLinksAnalisados
+		int linksAtivos
+		int linksComSSLValido
+		RelatorioId id
+		ColecaoId colecaoId_ref
+		List<ContagemScoreRisco> contagensScore
+	}
+	class RelatorioId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class ContagemScoreRisco <<(V,DarkSeaGreen) Value Object>> {
+		MonitoramentoContext.VerificacaoResultado.RiscoNivel nivelDoRisco
+		int quantidade
+	}
+}
+RelatorioColecao "1" *--> "*" ContagemScoreRisco : contagensScore
+RelatorioColecao --> RelatorioId : id
+
+
+@enduml

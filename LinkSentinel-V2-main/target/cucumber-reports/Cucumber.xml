@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="0.534" tests="21" skipped="0" failures="21" errors="0">
+<testcase classname="Adicionar e Verificar Links On-Demand" name="Adicionar um novo link valido a uma colecao e solicitar verificacao imediata" time="0.024">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1"(classpath:features/adicionar_verificar_links_ondemand.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1".pending
+And eu realizei o login com o e-mail "verificador@example.com" e senha "SenhaVerifica1".skipped
+And eu possuo uma colecao chamada "Minhas Ferramentas Online"...............skipped
+And eu estou visualizando a colecao "Minhas Ferramentas Online".............skipped
+When eu adiciono o link com URL "https://www.google.com" e descricao "Motor de Busca Google" a colecao "Minhas Ferramentas Online".skipped
+And eu solicito uma "verificacao imediata" para o link "https://www.google.com".skipped
+Then o link "https://www.google.com" com descricao "Motor de Busca Google" deve aparecer na colecao "Minhas Ferramentas Online".skipped
+And o sistema deve iniciar o processo de "verificacao" para "https://www.google.com".skipped
+And apos a conclusao da verificacao do link "https://www.google.com", eu devo poder visualizar o "Status HTTP" como "200 OK".skipped
+And eu devo poder visualizar a "Validade SSL" como "Valido".................skipped
+And eu devo poder visualizar o "Titulo da Pagina" contendo "Google".........skipped
+And eu devo poder visualizar o "Tempo de Resposta (ms)" como um valor "menor que 3000".skipped
+And eu devo poder visualizar o "Score de Risco Phishing" como "Baixo".......skipped
+]]></system-out>
+</testcase>
+<testcase classname="Adicionar e Verificar Links On-Demand" name="Tentativa de adicionar um link com URL em formato invalido" time="0.008">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1"(classpath:features/adicionar_verificar_links_ondemand.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1".pending
+And eu realizei o login com o e-mail "verificador@example.com" e senha "SenhaVerifica1".skipped
+And eu possuo uma colecao chamada "Minhas Ferramentas Online"...............skipped
+And eu estou visualizando a colecao "Minhas Ferramentas Online".............skipped
+When eu tento adicionar o link com URL "url_formato_invalido" e descricao "Link com erro" a colecao "Minhas Ferramentas Online".skipped
+Then eu devo ver a mensagem de erro "Formato de URL invalido."..............skipped
+And o link "url_formato_invalido" "nao deve ser" adicionado a colecao "Minhas Ferramentas Online".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Adicionar e Verificar Links On-Demand" name="Tentativa de adicionar um link que ja existe na mesma colecao" time="0.003">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1"(classpath:features/adicionar_verificar_links_ondemand.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1".pending
+And eu realizei o login com o e-mail "verificador@example.com" e senha "SenhaVerifica1".skipped
+And eu possuo uma colecao chamada "Minhas Ferramentas Online"...............skipped
+And eu estou visualizando a colecao "Minhas Ferramentas Online".............skipped
+Given que o link "https://www.github.com" com descricao "Plataforma GitHub" ja existe na colecao "Minhas Ferramentas Online".skipped
+When eu tento adicionar o link com URL "https://www.github.com" e descricao "Meu Repositorio GitHub" a colecao "Minhas Ferramentas Online".skipped
+Then eu devo ver a mensagem de erro "Este link ja existe na colecao 'Minhas Ferramentas Online'.".skipped
+And o link "https://www.github.com" "nao deve ser" adicionado novamente.....skipped
+]]></system-out>
+</testcase>
+<testcase classname="Adicionar e Verificar Links On-Demand" name="Solicitar verificacao imediata para um link existente que esta quebrado" time="0.004">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1"(classpath:features/adicionar_verificar_links_ondemand.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "verificador@example.com" e senha "SenhaVerifica1".pending
+And eu realizei o login com o e-mail "verificador@example.com" e senha "SenhaVerifica1".skipped
+And eu possuo uma colecao chamada "Minhas Ferramentas Online"...............skipped
+And eu estou visualizando a colecao "Minhas Ferramentas Online".............skipped
+Given que a colecao "Minhas Ferramentas Online" contem o link "http://linkpropositalmentequerado123.com" com descricao "Link Quebrado para Teste".skipped
+And o link "http://linkpropositalmentequerado123.com" foi verificado anteriormente como "inacessivel".skipped
+When eu solicito uma "verificacao imediata" para o link "http://linkpropositalmentequerado123.com".skipped
+Then o sistema deve iniciar o processo de "verificacao" para "http://linkpropositalmentequerado123.com".skipped
+And apos a conclusao da verificacao do link "http://linkpropositalmentequerado123.com", eu devo poder visualizar o "Status HTTP" como "Erro (ex: 404, Host Nao Encontrado)".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Analisar Riscos de Links (Phishing)" name="Analise automatica de phishing e visualizacao de score de risco alto para um link suspeito" time="0.003">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "analista_risco@example.com" e senha "SenhaAnalise1"(classpath:features/analisar_riscos_phishing.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "analista_risco@example.com" e senha "SenhaAnalise1".pending
+And eu realizei o login com o e-mail "analista_risco@example.com" e senha "SenhaAnalise1".skipped
+And eu possuo uma colecao chamada "Links para Analise"......................skipped
+And eu adicionei o link "http://sitepotencialmentesuspeito.com/login" com descricao "Site Suspeito" a colecao "Links para Analise".skipped
+And o sistema esta configurado para consultar "blacklists conhecidas de phishing".skipped
+And o sistema esta configurado para aplicar "heuristicas de URL para deteccao de phishing".skipped
+Given que a URL "http://sitepotencialmentesuspeito.com/login" "e reconhecida como de alto risco" pela analise de phishing.skipped
+When eu solicito uma "verificacao imediata" para o link "http://sitepotencialmentesuspeito.com/login".skipped
+Then o sistema deve realizar a "analise de risco de phishing" para o link "http://sitepotencialmentesuspeito.com/login".skipped
+And apos a conclusao da verificacao, ao visualizar os detalhes do link "http://sitepotencialmentesuspeito.com/login", eu devo ver o "Status HTTP" como "200 OK".skipped
+And eu devo ver o "Score de Risco Phishing" como "Alto".....................skipped
+And eu devo ver os "Motivos do Risco" como "Detectado em Blacklist X" # Ou "URL contem caracteres suspeitos", etc..skipped
+]]></system-out>
+</testcase>
+<testcase classname="Analisar Riscos de Links (Phishing)" name="Analise automatica de phishing e visualizacao de score de risco baixo para um link confiavel" time="0.002">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "analista_risco@example.com" e senha "SenhaAnalise1"(classpath:features/analisar_riscos_phishing.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "analista_risco@example.com" e senha "SenhaAnalise1".pending
+And eu realizei o login com o e-mail "analista_risco@example.com" e senha "SenhaAnalise1".skipped
+And eu possuo uma colecao chamada "Links para Analise"......................skipped
+And eu adicionei o link "http://sitepotencialmentesuspeito.com/login" com descricao "Site Suspeito" a colecao "Links para Analise".skipped
+And o sistema esta configurado para consultar "blacklists conhecidas de phishing".skipped
+And o sistema esta configurado para aplicar "heuristicas de URL para deteccao de phishing".skipped
+Given que a URL "https://www.wikipedia.org" "e reconhecida como de baixo risco" pela analise de phishing.skipped
+And eu adicionei o link "https://www.wikipedia.org" com descricao "Wikipedia" a colecao "Links para Analise".skipped
+When eu solicito uma "verificacao imediata" para o link "https://www.wikipedia.org".skipped
+Then o sistema deve realizar a "analise de risco de phishing" para o link "https://www.wikipedia.org".skipped
+And apos a conclusao da verificacao, ao visualizar os detalhes do link "https://www.wikipedia.org", eu devo ver o "Status HTTP" como "200 OK".skipped
+And eu devo ver o "Score de Risco Phishing" como "Baixo"....................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Analisar Riscos de Links (Phishing)" name="Visualizacao de score de risco medio devido a heuristicas de URL" time="0.004">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "analista_risco@example.com" e senha "SenhaAnalise1"(classpath:features/analisar_riscos_phishing.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "analista_risco@example.com" e senha "SenhaAnalise1".pending
+And eu realizei o login com o e-mail "analista_risco@example.com" e senha "SenhaAnalise1".skipped
+And eu possuo uma colecao chamada "Links para Analise"......................skipped
+And eu adicionei o link "http://sitepotencialmentesuspeito.com/login" com descricao "Site Suspeito" a colecao "Links para Analise".skipped
+And o sistema esta configurado para consultar "blacklists conhecidas de phishing".skipped
+And o sistema esta configurado para aplicar "heuristicas de URL para deteccao de phishing".skipped
+Given que a URL "http://login-banco-seguro.info-account-update.com/signin" "aciona heuristicas de URL suspeita" mas "nao esta em blacklists conhecidas".skipped
+And eu adicionei o link "http://login-banco-seguro.info-account-update.com/signin" com descricao "URL Heuristica" a colecao "Links para Analise".skipped
+When eu solicito uma "verificacao imediata" para o link "http://login-banco-seguro.info-account-update.com/signin".skipped
+Then o sistema deve realizar a "analise de risco de phishing" para o link "http://login-banco-seguro.info-account-update.com/signin".skipped
+And apos a conclusao da verificacao, ao visualizar os detalhes do link "http://login-banco-seguro.info-account-update.com/signin", eu devo ver o "Status HTTP" como "200 OK".skipped
+And eu devo ver o "Score de Risco Phishing" como "Medio"....................skipped
+And eu devo ver os "Motivos do Risco" como "URL contem termos suspeitos" # Ou similar, baseado nas heuristicas.skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Colecoes de Links" name="Criacao de uma nova colecao com nome valido e unico" time="0.004">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123"(classpath:features/gerenciamento_colecoes_links.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123".pending
+And eu realizei o login com o e-mail "colecionador_links@example.com" e senha "SenhaVal123".skipped
+And eu estou na "pagina de gerenciamento de colecoes".......................skipped
+When eu tento criar uma nova colecao com o nome "Artigos de IA para Ler"....skipped
+Then a colecao "Artigos de IA para Ler" deve ser criada e listada para o usuario "colecionador_links@example.com".skipped
+And eu devo ver a mensagem "Colecao 'Artigos de IA para Ler' criada com sucesso!".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Colecoes de Links" name="Visualizar links dentro de uma colecao existente e populada" time="0.004">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123"(classpath:features/gerenciamento_colecoes_links.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123".pending
+And eu realizei o login com o e-mail "colecionador_links@example.com" e senha "SenhaVal123".skipped
+And eu estou na "pagina de gerenciamento de colecoes".......................skipped
+Given que a colecao "Tutoriais de Desenvolvimento Web" do usuario "colecionador_links@example.com" existe.skipped
+And a colecao "Tutoriais de Desenvolvimento Web" contem o link "https://frontendmasters.com/" com descricao "Cursos de Frontend".skipped
+And a colecao "Tutoriais de Desenvolvimento Web" contem o link "https://www.djangoproject.com/" com descricao "Documentacao oficial Django".skipped
+And a colecao "Tutoriais de Desenvolvimento Web" contem o link "https://react.dev/" com descricao "Biblioteca React".skipped
+When eu seleciono a colecao "Tutoriais de Desenvolvimento Web" para visualizar seus links.skipped
+Then eu devo ver o link "https://frontendmasters.com/" com a descricao "Cursos de Frontend".skipped
+And eu devo ver o link "https://www.djangoproject.com/" com a descricao "Documentacao oficial Django".skipped
+And eu devo ver o link "https://react.dev/" com a descricao "Biblioteca React".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Colecoes de Links" name="Excluir uma colecao existente e seus links apos confirmacao" time="0">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123"(classpath:features/gerenciamento_colecoes_links.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123".pending
+And eu realizei o login com o e-mail "colecionador_links@example.com" e senha "SenhaVal123".skipped
+And eu estou na "pagina de gerenciamento de colecoes".......................skipped
+Given que o usuario "colecionador_links@example.com" possui uma colecao chamada "Links Temporarios".skipped
+And a colecao "Links Temporarios" contem o link "http://example.com/temp1" com descricao "Link temp 1".skipped
+When eu seleciono a colecao "Links Temporarios" para exclusao...............skipped
+And eu confirmo a acao de exclusao da colecao...............................skipped
+Then a colecao "Links Temporarios" e todos os seus links devem ser permanentemente removidos.skipped
+And a colecao "Links Temporarios" "nao deve mais ser exibida" na lista de colecoes.skipped
+And eu devo ver a mensagem "Colecao 'Links Temporarios' excluida com sucesso!".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Colecoes de Links" name="Tentativa de criar colecao com nome que ja existe" time="0">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123"(classpath:features/gerenciamento_colecoes_links.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "colecionador_links@example.com" e senha "SenhaVal123".pending
+And eu realizei o login com o e-mail "colecionador_links@example.com" e senha "SenhaVal123".skipped
+And eu estou na "pagina de gerenciamento de colecoes".......................skipped
+Given que eu ja possuo uma colecao chamada "Meus Favoritos".................skipped
+When eu tento criar uma nova colecao com o nome "Meus Favoritos"............skipped
+Then eu devo ver a mensagem de erro "Voce ja possui uma colecao com o nome 'Meus Favoritos'.".skipped
+And a colecao "Meus Favoritos" "nao deve ser" duplicada na minha lista de colecoes.skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Conta de Usuario" name="Registro bem-sucedido de um novo usuario" time="0.004">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.GerenciarContaUsuarioStepDefinitions.eu_clico_no_botao(GerenciarContaUsuarioStepDefinitions.java:33)
+	at ✽.eu clico no botao "Registrar"(classpath:features/gerenciar_conta_usuario.feature:14)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que o sistema LinkSentinel esta operacional...........................passed
+Given que eu sou um "novo visitante" na pagina de "registro"................passed
+When eu preencho o campo "E-mail" com "usuario_valido@example.com"..........passed
+And eu preencho o campo "Senha" com "SenhaSegura123@".......................passed
+And eu preencho o campo "Confirmacao de Senha" com "SenhaSegura123@"........passed
+And eu clico no botao "Registrar"...........................................pending
+Then eu devo ser redirecionado para a "pagina principal do usuario logado"..skipped
+And o usuario "usuario_valido@example.com" deve existir no sistema..........skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Conta de Usuario" name="Login bem-sucedido de um usuario existente" time="0">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "usuario_existente@example.com" e senha "SenhaCorreta123"(classpath:features/gerenciar_conta_usuario.feature:19)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que o sistema LinkSentinel esta operacional...........................passed
+Given que existe um usuario registrado no sistema com e-mail "usuario_existente@example.com" e senha "SenhaCorreta123".pending
+And eu estou na pagina de "login"...........................................skipped
+When eu preencho o campo "E-mail" com "usuario_existente@example.com".......skipped
+And eu preencho o campo "Senha" com "SenhaCorreta123".......................skipped
+And eu clico no botao "Entrar"..............................................skipped
+Then eu devo ser redirecionado para a "pagina principal do usuario logado"..skipped
+And minha sessao de usuario deve ser estabelecida...........................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Conta de Usuario" name="Solicitacao e redefinicao de senha com token valido" time="0.001">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.GerenciarContaUsuarioStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail(GerenciarContaUsuarioStepDefinitions.java:83)
+	at ✽.que existe um usuario registrado no sistema com e-mail "esquecido@example.com"(classpath:features/gerenciar_conta_usuario.feature:28)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que o sistema LinkSentinel esta operacional...........................passed
+Given que existe um usuario registrado no sistema com e-mail "esquecido@example.com".pending
+And eu estou na pagina de "solicitacao de redefinicao de senha".............skipped
+When eu informo o e-mail "esquecido@example.com" para redefinicao...........skipped
+And eu sigo o link de redefinicao recebido por e-mail com o token "TOKEN_XYZ123".skipped
+And eu defino a "Nova Senha" como "NovaSenhaSuper#456"......................skipped
+And eu confirmo a "Nova Senha" como "NovaSenhaSuper#456"....................skipped
+And eu clico no botao "Redefinir Senha Agora"...............................skipped
+Then a senha do usuario "esquecido@example.com" deve ser atualizada para a nova senha.skipped
+And o token "TOKEN_XYZ123" deve ser invalidado..............................skipped
+And eu devo ser redirecionado para a "pagina de login" com a mensagem "Senha redefinida com sucesso!".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Gerenciar Conta de Usuario" name="Tentativa de registro com e-mail que ja esta em uso" time="0.002">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.GerenciarContaUsuarioStepDefinitions.que_o_e_mail_ja_esta_cadastrado_no_sistema(GerenciarContaUsuarioStepDefinitions.java:139)
+	at ✽.que o e-mail "email_em_uso@example.com" ja esta cadastrado no sistema(classpath:features/gerenciar_conta_usuario.feature:40)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que o sistema LinkSentinel esta operacional...........................passed
+Given que o e-mail "email_em_uso@example.com" ja esta cadastrado no sistema.pending
+And eu sou um "novo visitante" na pagina de "registro"......................skipped
+When eu tento me registrar com o e-mail "email_em_uso@example.com" e senha "QualquerSenhaValida".skipped
+Then eu devo permanecer na pagina de "registro".............................skipped
+And eu devo ver a mensagem de erro "Este e-mail ja esta cadastrado."........skipped
+]]></system-out>
+</testcase>
+<testcase classname="Monitorar Links Agendados" name="Ativar monitoramento diario para uma colecao e receber notificacao de link quebrado" time="0.008">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "monitorador@example.com" e senha "SenhaMonitor1"(classpath:features/monitorar_links_agendados.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "monitorador@example.com" e senha "SenhaMonitor1".pending
+And eu realizei o login com o e-mail "monitorador@example.com" e senha "SenhaMonitor1".skipped
+And eu possuo uma colecao chamada "Meus Blogs Favoritos"....................skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogseguroefuncional.com" com descricao "Blog A".skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogquevaifora.com" com descricao "Blog B".skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogsuspeitoagora.com" com descricao "Blog C".skipped
+And o sistema de agendamento de tarefas esta operacional....................skipped
+Given que o monitoramento para a colecao "Meus Blogs Favoritos" "nao esta ativo".skipped
+When eu ativo o monitoramento "diario" para a colecao "Meus Blogs Favoritos".skipped
+And o proximo ciclo de monitoramento agendado e executado para a colecao "Meus Blogs Favoritos".skipped
+And durante o monitoramento, o link "http://blogquevaifora.com" e verificado como "inacessivel (erro 404)".skipped
+And o link "http://blogseguroefuncional.com" e verificado como "OK".........skipped
+Then eu devo receber uma "notificacao na plataforma" informando que o link "http://blogquevaifora.com" da colecao "Meus Blogs Favoritos" esta "quebrado".skipped
+And o status do link "http://blogquevaifora.com" deve ser atualizado para "inacessivel".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Monitorar Links Agendados" name="Ativar monitoramento semanal e receber notificacao de alto risco de phishing" time="0.002">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "monitorador@example.com" e senha "SenhaMonitor1"(classpath:features/monitorar_links_agendados.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "monitorador@example.com" e senha "SenhaMonitor1".pending
+And eu realizei o login com o e-mail "monitorador@example.com" e senha "SenhaMonitor1".skipped
+And eu possuo uma colecao chamada "Meus Blogs Favoritos"....................skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogseguroefuncional.com" com descricao "Blog A".skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogquevaifora.com" com descricao "Blog B".skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogsuspeitoagora.com" com descricao "Blog C".skipped
+And o sistema de agendamento de tarefas esta operacional....................skipped
+Given que o monitoramento para a colecao "Meus Blogs Favoritos" "nao esta ativo".skipped
+When eu ativo o monitoramento "semanal" para a colecao "Meus Blogs Favoritos".skipped
+And o proximo ciclo de monitoramento agendado e executado para a colecao "Meus Blogs Favoritos".skipped
+And durante o monitoramento, o link "http://blogsuspeitoagora.com" e analisado com "score de risco de phishing alto" devido a "presenca em nova blacklist".skipped
+And o link "http://blogseguroefuncional.com" e analisado com "score de risco de phishing baixo".skipped
+Then eu devo receber uma "notificacao por e-mail" (se configurado) e "na plataforma" alertando sobre o "alto risco de phishing" para o link "http://blogsuspeitoagora.com" da colecao "Meus Blogs Favoritos".skipped
+And o score de risco do link "http://blogsuspeitoagora.com" deve ser atualizado para "Alto".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Monitorar Links Agendados" name="Desativar monitoramento para uma colecao" time="0.003">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "monitorador@example.com" e senha "SenhaMonitor1"(classpath:features/monitorar_links_agendados.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "monitorador@example.com" e senha "SenhaMonitor1".pending
+And eu realizei o login com o e-mail "monitorador@example.com" e senha "SenhaMonitor1".skipped
+And eu possuo uma colecao chamada "Meus Blogs Favoritos"....................skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogseguroefuncional.com" com descricao "Blog A".skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogquevaifora.com" com descricao "Blog B".skipped
+And a colecao "Meus Blogs Favoritos" contem o link "http://blogsuspeitoagora.com" com descricao "Blog C".skipped
+And o sistema de agendamento de tarefas esta operacional....................skipped
+Given que o monitoramento "diario" para a colecao "Meus Blogs Favoritos" "esta ativo".skipped
+When eu desativo o monitoramento para a colecao "Meus Blogs Favoritos"......skipped
+Then a colecao "Meus Blogs Favoritos" "nao deve mais ser" verificada automaticamente nos ciclos agendados.skipped
+And eu devo ver uma mensagem confirmando que "o monitoramento para 'Meus Blogs Favoritos' foi desativado".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Visualizar Historicos e Relatorios de Links" name="Acessar historico de verificacoes de um link especifico" time="0.006">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "historiador@example.com" e senha "SenhaHist1"(classpath:features/visualizar_historicos_relatorios.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "historiador@example.com" e senha "SenhaHist1".pending
+And eu realizei o login com o e-mail "historiador@example.com" e senha "SenhaHist1".skipped
+And eu possuo uma colecao chamada "Minhas Pesquisas Academicas".............skipped
+And a colecao "Minhas Pesquisas Academicas" contem o link "http://paperinteressante.com/artigo1" com descricao "Artigo sobre IA".skipped
+Given que o link "http://paperinteressante.com/artigo1" na colecao "Minhas Pesquisas Academicas" possui um registro de verificacao de "2024-05-27 10:00:00" com "Status HTTP: 200 OK" e "Score Risco Phishing: Baixo".skipped
+And que o link "http://paperinteressante.com/artigo1" na colecao "Minhas Pesquisas Academicas" possui um registro de verificacao de "2024-05-20 09:00:00" com "Status HTTP: 200 OK" e "Score Risco Phishing: Baixo".skipped
+And que o link "http://paperinteressante.com/artigo1" na colecao "Minhas Pesquisas Academicas" possui um registro de verificacao de "2024-05-13 08:00:00" com "Status HTTP: 404 Not Found" e "Score Risco Phishing: Indeterminado".skipped
+When eu seleciono o link "http://paperinteressante.com/artigo1".............skipped
+And eu solicito o "historico de verificacoes" desse link....................skipped
+Then eu devo ver uma lista de verificacoes anteriores para "http://paperinteressante.com/artigo1" ordenada da mais recente para a mais antiga.skipped
+And a entrada do historico para "2024-05-27 10:00:00" deve mostrar "Status HTTP: 200 OK" e "Score Risco Phishing: Baixo".skipped
+And a entrada do historico para "2024-05-13 08:00:00" deve mostrar "Status HTTP: 404 Not Found" e "Score Risco Phishing: Indeterminado".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Visualizar Historicos e Relatorios de Links" name="Acessar relatorio consolidado de uma colecao com links em diferentes estados" time="0.003">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "historiador@example.com" e senha "SenhaHist1"(classpath:features/visualizar_historicos_relatorios.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "historiador@example.com" e senha "SenhaHist1".pending
+And eu realizei o login com o e-mail "historiador@example.com" e senha "SenhaHist1".skipped
+And eu possuo uma colecao chamada "Minhas Pesquisas Academicas".............skipped
+And a colecao "Minhas Pesquisas Academicas" contem o link "http://paperinteressante.com/artigo1" com descricao "Artigo sobre IA".skipped
+Given que a colecao "Minhas Pesquisas Academicas" do usuario "historiador@example.com" contem o link "http://paperinteressante.com/artigo1" com descricao "Artigo sobre IA", ultimo "Status HTTP: 200 OK", "Validade SSL: Valido" e "Score Risco Phishing: Baixo".skipped
+And a colecao "Minhas Pesquisas Academicas" do usuario "historiador@example.com" contem o link "http://jornalcientifico.com/estudo2" com descricao "Estudo Cientifico", ultimo "Status HTTP: 200 OK", "Validade SSL: Valido" e "Score Risco Phishing: Baixo".skipped
+And a colecao "Minhas Pesquisas Academicas" do usuario "historiador@example.com" contem o link "http://linkquebradoagora.net/page" com descricao "Link Quebrado", ultimo "Status HTTP: 500 Server Error", "Validade SSL: Invalido" e "Score Risco Phishing: Indeterminado".skipped
+And a colecao "Minhas Pesquisas Academicas" do usuario "historiador@example.com" contem o link "http://sitephishingsimulado.com/login" com descricao "Site Perigoso", ultimo "Status HTTP: 200 OK", "Validade SSL: Valido" e "Score Risco Phishing: Alto".skipped
+When eu seleciono a colecao "Minhas Pesquisas Academicas"...................skipped
+And eu solicito o "relatorio consolidado" da colecao........................skipped
+Then eu devo ver no relatorio para "Minhas Pesquisas Academicas" a metrica "Total de Links" com valor "4".skipped
+And eu devo ver no relatorio para "Minhas Pesquisas Academicas" a metrica "Links Ativos (%)" com valor "75%".skipped
+And eu devo ver no relatorio para "Minhas Pesquisas Academicas" a metrica "Links com SSL Valido (%)" com valor "75%".skipped
+And eu devo ver no relatorio para "Minhas Pesquisas Academicas" a metrica "Links com Risco Alto (%)" com valor "25%".skipped
+And eu devo ver no relatorio para "Minhas Pesquisas Academicas" a metrica "Links com Risco Medio (%)" com valor "0%".skipped
+And eu devo ver no relatorio para "Minhas Pesquisas Academicas" a metrica "Links com Risco Baixo (%)" com valor "50%".skipped
+]]></system-out>
+</testcase>
+<testcase classname="Visualizar Historicos e Relatorios de Links" name="Acessar relatorio de uma colecao vazia" time="0.002">
+<failure type="io.cucumber.java.PendingException" message="TODO: implement me">
+<![CDATA[io.cucumber.java.PendingException: TODO: implement me
+	at br.cesar.school.linksentinel.steps.AnalisarRiscosPhishingStepDefinitions.que_existe_um_usuario_registrado_no_sistema_com_e_mail_e_senha(AnalisarRiscosPhishingStepDefinitions.java:13)
+	at ✽.que existe um usuario registrado no sistema com e-mail "historiador@example.com" e senha "SenhaHist1"(classpath:features/visualizar_historicos_relatorios.feature:7)
+]]>
+</failure>
+<system-out><![CDATA[
+Given que existe um usuario registrado no sistema com e-mail "historiador@example.com" e senha "SenhaHist1".pending
+And eu realizei o login com o e-mail "historiador@example.com" e senha "SenhaHist1".skipped
+And eu possuo uma colecao chamada "Minhas Pesquisas Academicas".............skipped
+And a colecao "Minhas Pesquisas Academicas" contem o link "http://paperinteressante.com/artigo1" com descricao "Artigo sobre IA".skipped
+Given que eu possuo uma colecao chamada "Nova Colecao Vazia" que "nao contem" links.skipped
+When eu seleciono a colecao "Nova Colecao Vazia"............................skipped
+And eu solicito o "relatorio consolidado" da colecao........................skipped
+Then eu devo ver um relatorio para "Nova Colecao Vazia" indicando "Nao ha links nesta colecao para gerar um relatorio.".skipped
+And as estatisticas devem mostrar "0" para total de links...................skipped
+]]></system-out>
+</testcase>
+</testsuite>

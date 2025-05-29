@@ -1,0 +1,26 @@
+@startuml
+
+skinparam componentStyle uml2
+
+package "'Usuario' Aggregate" <<Rectangle>> {
+	class Usuario <<(A,#fffab8) Aggregate Root>> {
+		UsuarioId id
+		Email emailAddress
+		SenhaHash senhaHash
+	}
+	class UsuarioId <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+	class Email <<(V,DarkSeaGreen) Value Object>> {
+		String endereco
+	}
+	class SenhaHash <<(V,DarkSeaGreen) Value Object>> {
+		String valor
+	}
+}
+Usuario --> UsuarioId : id
+Usuario --> SenhaHash : senhaHash
+Usuario --> Email : emailAddress
+
+
+@enduml
